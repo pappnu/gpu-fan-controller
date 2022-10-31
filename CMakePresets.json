@@ -1,0 +1,51 @@
+{
+    "version": 4,
+    "cmakeMinimumRequired": {
+        "major": 3,
+        "minor": 20,
+        "patch": 0
+    },
+    "configurePresets": [
+        {
+            "name": "release",
+            "displayName": "Release",
+            "description": "Release config",
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/build/release",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release",
+                "CMAKE_CXX_FLAGS": "-O3 -Wall -Wextra -pedantic",
+                "CMAKE_CXX_STANDARD": "17",
+                "CMAKE_CXX_EXTENSIONS": "OFF"
+            }
+        },
+        {
+            "name": "debug",
+            "displayName": "Debug",
+            "description": "Debug config",
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/build/debug",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug",
+                "CMAKE_EXPORT_COMPILE_COMMANDS": true,
+                "CMAKE_CXX_FLAGS": "-g -Og -Wall -Wextra -pedantic -fsanitize=undefined",
+                "CMAKE_CXX_STANDARD": "17",
+                "CMAKE_CXX_EXTENSIONS": "OFF"
+            }
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "release",
+            "description": "Release build",
+            "displayName": "Release",
+            "configurePreset": "release"
+        },
+        {
+            "name": "debug",
+            "description": "Debug build",
+            "displayName": "Debug",
+            "configurePreset": "debug"
+        }
+    ]
+}
